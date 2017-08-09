@@ -19,12 +19,12 @@ export default new Router({
     },
     {
     	path: '/signin',
-    	name: 'signin',
+    	name: 'auth.signin',
     	component: SignIn
     },
     {
     	path: '/signup',
-    	name: 'signup',
+    	name: 'auth.signup',
     	component: SignUp
     },
     {
@@ -39,7 +39,7 @@ export default new Router({
     },
     {
     	path: '/topic/new',
-    	name: 'newTopic',
+    	name: 'topic.new',
     	component: NewTopic
     }
   ]

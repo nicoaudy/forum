@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: 'newTopic',
+	
 }
 </script>

@@ -14,12 +14,20 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Post a topic</a></li>
+            <li>
+            	<router-link :to="{ name: 'home'}">Home</router-link>
+            </li>
+            <li>
+            	<router-link :to="{ name: 'topic.new' }">Post a new topic</router-link>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Sign in</a></li>
-            <li><a href="#">Sign up</a></li>
+            <li>
+            	<router-link :to="{ name: 'auth.signin' }">Sign in</router-link>
+            </li>
+            <li>
+            	<router-link :to="{ name: 'auth.signup' }">Sign up</router-link>
+            </li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, Nico
 					<span class="caret"></span>
