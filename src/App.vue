@@ -28,14 +28,14 @@
             <li>
             	<router-link :to="{ name: 'auth.signup' }">Sign up</router-link>
             </li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, Nico
-					<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu">
-            		<li><a href="#">Sign out</a></li>
-				</ul>
-			</li> 
+      			<li class="dropdown">
+      				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, Nico
+      					<span class="caret"></span>
+      				</a>
+      				<ul class="dropdown-menu">
+                  		<li><a href="#">Sign out</a></li>
+      				</ul>
+      			</li> 
           </ul>
         </div><!--/.nav-collapse -->
       </div>

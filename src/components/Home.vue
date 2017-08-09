@@ -1,6 +1,6 @@
 <template>
   <div>
-  	<h3>Home</h3>
+  	<h3>Sections</h3><hr>
   	<ul class="list-unstyled">
   		<li class="well" v-for="section in sections">
   			<h4>
@@ -21,15 +21,15 @@ export default {
 			sections: []
 		}
 	}, 
-	mounted() {
-		this.getSections()
-	},
 	methods: {
 		getSections() {
 			store.getSections().then(sections => {
 				this.sections = sections
 			})
 		}
+	},
+	mounted() {
+		this.getSections()
 	}
 }
 </script>
