@@ -1,6 +1,12 @@
 <template>
   <div>
-    Home
+  	<h3>Home</h3>
+  	<ul class="list-unstyled">
+  		<li class="well" v-for="section in sections">
+  			<h4><a href="">{{ section.title }}</a></h4>
+  			<p>{{ section.description }}</p>
+  		</li>
+  	</ul>
   </div>
 </template>
 
@@ -8,10 +14,20 @@
 import store from '../store'
 
 export default {
+	data() {
+		return {
+			sections: []
+		}
+	}, 
 	mounted() {
-		store.getSections().then(sections => {
-			console.log(sections)
-		})
+		this.getSections()
+	},
+	methods: {
+		getSections() {
+			store.getSections().then(sections => {
+				this.sections = sections
+			})
+		}
 	}
 }
 </script>
