@@ -8,11 +8,11 @@ export default {
            email: email, 
            password: password
         })
-        .then(function (response) {
+        .then(response => {
             context.success = true
         }, response => {
-            context.response    = response.data
-            context.error       = true
+            context.response = response.data
+            context.error = true
         })
     }
 }
