@@ -14,6 +14,7 @@ export default {
     }).then(response => {
       context.error = false
       localStorage.setItem('id_token', response.data.meta.token)
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('id_token')
 
       this.user.authenticated = true,
       this.user.profile = response.data.data
