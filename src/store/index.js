@@ -1,9 +1,5 @@
 import Vue from 'vue'
-import VueResource from 'vue-resource'
-
-Vue.use(VueResource)
-
-Vue.http.options.root = 'http://forum-api.dev'
+import axios from 'axios'
 
 const store = {}
 
@@ -15,7 +11,7 @@ store.state = {
 
 store.getSections = () => {
 	return new Promise((resolve, reject) => {
-		Vue.http.get('api/sections').then(response => {
+		axios.get('/api/sections').then(response => {
 			resolve(response.data.data)
 		})
 	})
@@ -23,7 +19,7 @@ store.getSections = () => {
 
 store.getTopicsBySection = (id) => {
 	return new Promise((resolve, reject) => {
-		Vue.http.get('api/topic', {params: {'section_id': id}}).then(response => {
+		axios.get('/api/topic', {params: {'section_id': id}}).then(response => {
 			resolve(response.data.data)
 		})
 	})
