@@ -33,7 +33,7 @@
       					<span class="caret"></span>
       				</a>
       				<ul class="dropdown-menu">
-                  		<li><a href="#">Sign out</a></li>
+            		<li><a href="#">Sign out</a></li>
       				</ul>
       			</li> 
           </ul>
