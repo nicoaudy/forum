@@ -17,19 +17,19 @@
             <li>
             	<router-link :to="{ name: 'home'}">Home</router-link>
             </li>
-            <li>
+            <li  v-if="auth.user.authenticated">
             	<router-link :to="{ name: 'topic.new' }">Post a new topic</router-link>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li>
+            <li v-if="!auth.user.authenticated">
             	<router-link :to="{ name: 'auth.signin' }">Sign in</router-link>
             </li>
-            <li>
+            <li v-if="!auth.user.authenticated">
             	<router-link :to="{ name: 'auth.signup' }">Sign up</router-link>
             </li>
-      			<li class="dropdown">
-      				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, Nico
+      			<li class="dropdown"  v-if="auth.user.authenticated">
+      				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, {{ auth.user.profile.username }}
       					<span class="caret"></span>
       				</a>
       				<ul class="dropdown-menu">
@@ -59,8 +59,14 @@
 </template>
 
 <script>
+import auth from './auth/'
+
 export default {
-  name: 'app'
+  data() {
+    return {
+      auth: auth
+    }
+  }
 }
 </script>
 
