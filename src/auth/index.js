@@ -7,6 +7,14 @@ export default {
     authenticated: false,
     profile: null
   },
+  check(){
+    if (localStorage.getItem('id_token') !== null) {
+      axios.get('/api/user').then(response => {
+        this.user.authenticated = true
+        this.user.profile       = response.data.data
+      })
+    }
+  },
   signin(context, email, password){
     axios.post('/api/auth/signin', {
       email: email,

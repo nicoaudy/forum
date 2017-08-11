@@ -66,6 +66,9 @@ export default {
     return {
       auth: auth
     }
+  },
+  mounted() {
+    auth.check(this)
   }
 }
 </script>

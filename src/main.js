@@ -8,6 +8,8 @@ import axios from 'axios'
 Vue.config.productionTip = false
 
 axios.defaults.baseURL = 'http://forum-api.dev';
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('id_token')
+
 
 /* eslint-disable no-new */
 new Vue({
