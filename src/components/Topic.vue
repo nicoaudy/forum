@@ -11,7 +11,7 @@
 				{{ topic.title }}
 			</h3>
 			<p>Posted by {{ topic.user.data.username }} - {{ topic.diffForHuman }}</p>
-			<p>{{ topic.body }}</p>
+			<p>{{ topic.body | marked }}</p>
 
 			<div class="media" v-for="post in topic.posts.data">
 		    	<div class="media-left">		
@@ -21,7 +21,7 @@
 		    	</div>
 				<div class="media-body">
 					<p>Posted by {{ post.user.data.username }} - {{ post.diffForHumans }}</p>
-					<p>{{ post.body }}</p>
+					<div v-html="post.body" filters="marked"></div>
 				</div>
 		    </div>
 
@@ -32,6 +32,7 @@
 
 <script>
 import store from '../store'
+import marked from 'marked'
 
 export default {
 	data() {
@@ -48,6 +49,9 @@ export default {
 	},
 	mounted() {
 		this.getTopic()
+	},
+	filters: {
+		marked: marked
 	}
 }
 </script>
