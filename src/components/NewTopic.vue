@@ -2,7 +2,7 @@
   <div>
   	<p v-if="!auth.user.authenticated">Please sign in before posting a topic</p>
     
-    <form v-if="auth.user.authenticated" v-on:submit.prevent="postSection">
+    <form v-if="auth.user.authenticated" v-on:submit.prevent="postTopic">
     	<div class="form-group">
     		<label for="section">Section</label>
     		<select id="section" class="form-control" v-model="section" required>
@@ -11,7 +11,7 @@
     	</div>
     	<div class="form-group">
     		<label for="title">Title</label>
-    		<input type="text" id="title" class="form-control" v-model="title" required>
+    		<input type="text" id="title" class="form-control" v-model="title">
     	</div>
     	<div class="form-group">
     		<label for="body">body</label>
@@ -25,6 +25,7 @@
 <script>
 import auth from '../auth'
 import store from '../store'
+import router from '../router'
 
 export default {
 	data() {
@@ -37,8 +38,15 @@ export default {
 		}
 	},
 	methods: {
-		postSection(){
-
+		postTopic(){
+			store.createTopic(this.section, this.title, this.body).then(topic => {
+				router.push({
+					name: 'topic',
+					params: {
+						topicId: topic.id
+					}
+				})	
+			})
 		}
 	},
 	mounted() {
