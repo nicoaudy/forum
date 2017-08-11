@@ -11,7 +11,7 @@
 				{{ topic.title }}
 			</h3>
 			<p>Posted by {{ topic.user.data.username }} - {{ topic.diffForHuman }}</p>
-			<p>{{ topic.body | marked }}</p>
+			<p v-html="$options.filters.marked(topic.body)"></p>
 
 			<div class="media" v-for="post in topic.posts.data">
 		    	<div class="media-left">		
@@ -21,7 +21,7 @@
 		    	</div>
 				<div class="media-body">
 					<p>Posted by {{ post.user.data.username }} - {{ post.diffForHumans }}</p>
-					<div v-html="$options.filters.marked(post.body)"></div>
+					<p v-html="$options.filters.marked(post.body)"></p>
 				</div>
 		    </div>
 
