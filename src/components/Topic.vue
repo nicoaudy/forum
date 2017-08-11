@@ -24,7 +24,17 @@
 					<p v-html="$options.filters.marked(post.body)"></p>
 				</div>
 		    </div>
+		    
+		    <div class="well" v-if="!auth.user.authenticated">
+		    	Sign up or sign in to reply.	
+		    </div><hr>
 
+			<form v-on:submit.prevent="replyTopic" v-if="auth.user.authenticated">
+				<div class="form-group">
+					<textarea v-model="body" rows="6" class="form-control" placeholder="Reply" required></textarea>
+				</div>
+				<button type="submit" class="btn btn-default">Reply</button>
+			</form>
 		</div>
     </div>
   </div>
@@ -33,11 +43,14 @@
 <script>
 import store from '../store'
 import marked from 'marked'
+import auth from '../auth'
 
 export default {
 	data() {
 		return {
-			topic: null
+			topic: null,
+			body: '',
+      		auth: auth
 		}
 	}, 
 	methods: {
@@ -45,9 +58,15 @@ export default {
 			store.getTopicById(this.$route.params.topicId).then(topic => {
 				this.topic = topic
 			})
+		},
+		replyTopic() {
+			store.replyTopicById(this.topic.id, this.body).then(post => {
+
+			})
 		}
 	},
 	mounted() {
+    	auth.check(this)
 		this.getTopic()
 	},
 	filters: {

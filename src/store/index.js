@@ -34,3 +34,14 @@ store.getTopicById = (id) => {
 		})	
 	})
 }
+
+store.replyTopicById = (id, body) => {
+	return new Promise((resolve, reject) => {
+		axios.post('/api/topic/' + id + '/post', {
+			body: body
+		})
+		.then(response => {
+			resolve(response.data.data)
+		})
+	})
+}
