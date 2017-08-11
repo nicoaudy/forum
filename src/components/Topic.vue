@@ -21,7 +21,7 @@
 		    	</div>
 				<div class="media-body">
 					<p>Posted by {{ post.user.data.username }} - {{ post.diffForHumans }}</p>
-					<div v-html="post.body" filters="marked"></div>
+					<div v-html="$options.filters.marked(post.body)"></div>
 				</div>
 		    </div>
 
