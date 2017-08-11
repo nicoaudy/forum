@@ -61,7 +61,8 @@ export default {
 		},
 		replyTopic() {
 			store.replyTopicById(this.topic.id, this.body).then(post => {
-
+				this.topic.posts.data.push(post)
+				this.body = ''
 			})
 		}
 	},
