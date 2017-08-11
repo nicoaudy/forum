@@ -38,8 +38,8 @@ export default new Router({
     	component: Topic
     },
     {
-    	path: '/topic/new',
-    	name: 'topic.new',
+    	path: '/new/topic',
+    	name: 'new.topic',
     	component: NewTopic
     }
   ]

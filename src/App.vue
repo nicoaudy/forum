@@ -18,7 +18,7 @@
             	<router-link :to="{ name: 'home'}">Home</router-link>
             </li>
             <li  v-if="auth.user.authenticated">
-            	<router-link :to="{ name: 'topic.new' }">Post a new topic</router-link>
+            	<router-link :to="{ name: 'new.topic' }">Post a new topic</router-link>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">

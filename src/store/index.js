@@ -5,10 +5,6 @@ const store = {}
 
 export default store
 
-store.state = {
-	topic: null
-}
-
 store.getSections = () => {
 	return new Promise((resolve, reject) => {
 		axios.get('/api/sections').then(response => {

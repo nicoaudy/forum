@@ -1,11 +1,51 @@
 <template>
   <div>
-    New Topic
+  	<p v-if="!auth.user.authenticated">Please sign in before posting a topic</p>
+    
+    <form v-if="auth.user.authenticated" v-on:submit.prevent="postSection">
+    	<div class="form-group">
+    		<label for="section">Section</label>
+    		<select id="section" class="form-control" v-model="section" required>
+    			<option v-for="section in sections" v-bind:value="section.id">{{ section.title }}</option>
+    		</select>
+    	</div>
+    	<div class="form-group">
+    		<label for="title">Title</label>
+    		<input type="text" id="title" class="form-control" v-model="title" required>
+    	</div>
+    	<div class="form-group">
+    		<label for="body">body</label>
+    		<textarea id="body" rows="8" v-model="body" class="form-control"></textarea>
+    	</div>
+    	<button type="submit" class="btn btn-primary">Create topic</button>
+    </form>
   </div>
 </template>
 
 <script>
+import auth from '../auth'
+import store from '../store'
+
 export default {
-	
+	data() {
+		return {
+			auth: auth,
+			sections: [],
+			section: null,
+			title: null,
+			body: null,
+		}
+	},
+	methods: {
+		postSection(){
+
+		}
+	},
+	mounted() {
+		store.getSections().then(sections => {
+			this.sections = sections
+			this.section = sections[0].id
+		})
+	}	
 }
 </script>
