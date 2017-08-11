@@ -46,5 +46,14 @@ export default {
             context.response = response.data
             context.error = true
         })
+    },
+    signout(){
+      localStorage.removeItem('id_token')
+      this.user.authenticated = false
+      this.user.profile = null
+
+      router.push({
+        name: 'home'
+      })
     }
 }

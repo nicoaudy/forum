@@ -33,7 +33,7 @@
       					<span class="caret"></span>
       				</a>
       				<ul class="dropdown-menu">
-            		<li><a href="#">Sign out</a></li>
+            		<li><a href="#" v-on:click="signout">Sign out</a></li>
       				</ul>
       			</li> 
           </ul>
@@ -65,6 +65,11 @@ export default {
   data() {
     return {
       auth: auth
+    }
+  },
+  methods: {
+    signout() {
+      auth.signout()
     }
   },
   mounted() {
