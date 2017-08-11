@@ -19,8 +19,18 @@ store.getSections = () => {
 
 store.getTopicsBySection = (id) => {
 	return new Promise((resolve, reject) => {
-		axios.get('/api/topic', {params: {'section_id': id}}).then(response => {
+		axios.get('/api/topic', {params: {'section_id': id}})
+		.then(response => {
 			resolve(response.data.data)
 		})
+	})
+}
+
+store.getTopicById = (id) => {
+	return new Promise((resolve, reject) => {
+		axios.get('/api/topic/' + id)
+		.then(response => {
+			resolve(response.data.data)
+		})	
 	})
 }
